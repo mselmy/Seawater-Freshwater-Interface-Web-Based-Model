@@ -237,13 +237,13 @@ function verruijt(x, q, K, B) {
 }
 
 function GetUserDate() {
-  let Q = +document.getElementById('Q').value;
-  let K = +document.getElementById('K').value;
+  let Q = +document.getElementById('Q').value*1000000;
+  let K = +document.getElementById('K').value*100;
   let pf = +document.getElementById('pf').value;
   let ps = +document.getElementById('ps').value;
-  let hs = +document.getElementById('hs').value;
+  let hs = +document.getElementById('hs').value*100;
   let hf = +document.getElementById('hf').value;
-  let L = +document.getElementById('L').value;
+  let L = +document.getElementById('L').value*100;
   let step = +document.getElementById('step').value;
   let formula = +document.getElementById('formula').value;
   return { Q, K, pf, ps, hs, hf, L, step, formula };
@@ -257,13 +257,13 @@ function GetZValue(Data, x) {
 
   switch (Data.formula) {
     case Enumerator.GhybenHerzberg:
-      return ghybenHerzberg(x, q, Data.pf, Data.ps, Data.K);
+      return ghybenHerzberg(x, q, Data.pf, Data.ps, Data.K)/100;
     case Enumerator.Glover:
-      return glover(x, q, Data.pf, Data.ps, Data.K);
+      return glover(x, q, Data.pf, Data.ps, Data.K)/100;
     case Enumerator.RumerHarleman:
-      return rumerHarleman(x, q, Data.pf, Data.ps, Data.K);
+      return rumerHarleman(x, q, Data.pf, Data.ps, Data.K)/100;
     case Enumerator.Verruijt:
-      return verruijt(x, q, Data.K, B);
+      return verruijt(x, q, Data.K, B)/100;
     default:
       return 0;
   }
@@ -276,23 +276,23 @@ function UpdateTable(table, xtoe, Data) {
     let x = i * Data.step;
     let z;
     if (x < xtoe) {
-      z = GetZValue(Data, x);
+      z = GetZValue(Data, x*100);
     } else {
       break;
     }
-    data.push([x, z]);
+    data.push([x.toFixed(3), z]);
   }
-  data.push([xtoe.toFixed(3), GetZValue(Data, xtoe)]);
+  data.push([xtoe.toFixed(4), GetZValue(Data, xtoe*100)]);
   table.rows().remove().draw();
   table.rows.add(data).draw(false);
 }
 
 function GetXToeValues(Data) {
-  let step = 0.01;
+  let step = 0.0001;
   let z = 0;
   let x = 0;
-  while (z < Data.hs) {
-    z = GetZValue(Data, x);
+  while (z < Data.hs/100) {
+    z = GetZValue(Data, (x*100));
     x += step;
   }
   return x - 2 * step;
@@ -318,8 +318,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   let table = new DataTable('#myTable', {
     columns: [
-      { label: 'x', name: 'x', title: 'x' },
-      { label: 'z', name: 'z', title: 'z' },
+      { label: 'x', name: 'x', title: 'x (m)' },
+      { label: 'z', name: 'z', title: 'z (m)' },
     ]
   });
 });
