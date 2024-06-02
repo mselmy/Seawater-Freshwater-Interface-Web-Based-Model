@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Modernize Free</title>
-  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <title>Seawater - Freshwater Interface Web Based Model</title>
+  <link rel="shortcut icon" type="image/png" href="https://eng.tanta.edu.eg/images/logo.png" />
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
   <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
 </head>
@@ -20,7 +20,7 @@
       <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="../assets/images/logos/dark-logo.svg" width="180" alt="" />
+            <img src="https://eng.tanta.edu.eg/images/logo.png" width="50" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -147,22 +147,23 @@
     <!--  Main wrapper -->
     <div class="body-wrapper">
       <!--  Header Start -->
-      <!-- <header class="app-header">
+      <header class="app-header">
         <nav class="navbar navbar-expand-lg navbar-light">
           <ul class="navbar-nav">
-            <li class="nav-item d-block d-xl-none">
+            <!-- <li class="nav-item d-block d-xl-none">
               <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
                 <i class="ti ti-menu-2"></i>
               </a>
-            </li>
+            </li> -->
             <li class="nav-item">
-              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+              <!-- <a class="nav-link nav-icon-hover" href="javascript:void(0)">
                 <i class="ti ti-bell-ringing"></i>
                 <div class="notification bg-primary rounded-circle"></div>
-              </a>
+              </a> -->
+              <h3><b>Seawater - Freshwater Interface Web Based Model</b></h3>
             </li>
           </ul>
-          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+          <!-- <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               <a href="https://adminmart.com/product/modernize-free-bootstrap-admin-dashboard/" target="_blank" class="btn btn-primary">Download Free</a>
               <li class="nav-item dropdown">
@@ -189,9 +190,9 @@
                 </div>
               </li>
             </ul>
-          </div>
+          </div> -->
         </nav>
-      </header> -->
+      </header>
       <!--  Header End -->
       <div class="container-fluid">
         <!--  Row 1 -->
@@ -244,18 +245,18 @@
                   <div class="row">
                     <div class="col-3">
                       <div class="mb-3">
-                        <label for="hs" class="form-label">hs</label>
+                        <label for="hs" class="form-label">H</label>
                         <input type="text" value="0.265" class="form-control" id="hs" aria-describedby="hsHelp">
                         <div id="hsHelp" class="form-text">m</div>
                       </div>
                     </div>
-                    <div class="col-3">
+                    <!-- <div class="col-3">
                       <div class="mb-3">
                         <label for="hf" class="form-label">hf</label>
                         <input type="text" value="27.7" class="form-control" id="hf" aria-describedby="hfHelp">
                         <div id="hfHelp" class="form-text">cm</div>
                       </div>
-                    </div>
+                    </div> -->
                     <div class="col-3">
                       <div class="mb-3">
                         <label for="L" class="form-label">L</label>
@@ -279,7 +280,7 @@
           <div class="col-lg-4 d-flex align-items-strech">
             <div class="card w-100">
               <div class="card-body">
-                <img src="https://i0.wp.com/egypt-stone.net/ar/wp-content/uploads/2024/01/placeholder-45.png?ssl=1" class="card-img-top rounded-0" alt="...">
+                <img src="/src/assets/images/Figures/Seawater---Freshwater-Interface.png" class="card-img-top rounded-0" alt="...">
             </div>
           </div>
           <!-- <div class="col-lg-8 d-flex align-items-strech">
@@ -373,6 +374,14 @@
             </div>
           </div> -->
         </div>
+        <div class="row">
+          <div class="col-lg-12 d-flex align-items-strech">
+            <div class="card w-100">
+              <div class="card-body">
+                <canvas id="myChart" class="d-none"></canvas>
+              </div>
+            </div>
+          </div>
         <div class="row">
           <div class="col-lg-12 d-flex align-items-strech">
             <div class="card w-100">
@@ -654,8 +663,8 @@
   <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
   <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
   <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="../assets/js/dashboard.js"></script>
-  
 </body>
 
 </html>

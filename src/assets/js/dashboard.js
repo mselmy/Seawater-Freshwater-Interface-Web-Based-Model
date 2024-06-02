@@ -242,7 +242,8 @@ function GetUserDate() {
   let pf = +document.getElementById('pf').value;
   let ps = +document.getElementById('ps').value;
   let hs = +document.getElementById('hs').value*100;
-  let hf = +document.getElementById('hf').value;
+  //let hf = +document.getElementById('hf').value;
+  let hf = 0;
   let L = +document.getElementById('L').value*100;
   let step = +document.getElementById('step').value;
   let formula = +document.getElementById('formula').value;
@@ -298,6 +299,58 @@ function GetXToeValues(Data) {
   return x - 2 * step;
 }
 
+let myChartInstance;
+
+function LoadChart(Data){
+  const ctx = document.getElementById('myChart');
+
+  if (myChartInstance) {
+    myChartInstance.destroy();
+  }
+
+  ctx.classList.remove('d-none');
+
+  // Extract data from the table
+  let tableData = $('#myTable').DataTable().rows().data().toArray();
+  let labels = tableData.map(row => row[0]); // x values
+  let data = tableData.map(row => row[1]); // z values
+
+  // Define formula names
+  const formulaNames = [
+    "Ghyben-Herzberg",
+    "Glover",
+    "Rumer-Harleman",
+    "Verruijt"
+  ];
+
+  // Create a new chart instance and assign it to the global variable
+  myChartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: formulaNames[Data.formula],
+        data: data,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        x: {
+          reverse: true, // Reverse the x-axis
+          position: 'top' // Position the x-axis at the top
+        },
+        y: {
+          beginAtZero: true,
+          reverse: true, // Reverse the x-axis
+          position: 'right' // Position the x-axis at the top
+        }
+      }
+    }
+  });
+}
+
+
 Enumerator = {
   GhybenHerzberg: 0,
   Glover: 1,
@@ -309,6 +362,7 @@ async function Calculate(table) {
   let Data = GetUserDate();
   let xtoe = await GetXToeValues(Data);
   UpdateTable(table, xtoe, Data);
+  LoadChart(Data);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
