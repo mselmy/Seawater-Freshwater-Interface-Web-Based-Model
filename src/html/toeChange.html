@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seawater - Freshwater Interface Web Based Model</title>
+  <link rel="shortcut icon" type="image/png" href="https://eng.tanta.edu.eg/images/logo.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
+</head>
+
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.html" class="text-nowrap logo-img">
+            <img src="https://eng.tanta.edu.eg/images/logo.png" width="50" alt="" />
+          </a>
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Water Interface</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./toeChange.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Toe Change</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <h3><b>Seawater - Freshwater Interface Web Based Model</b></h3>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <!--  Row 1 -->
+        <div class="row">
+          <div class="col-lg-8 d-flex align-items-strech">
+            <div class="card w-100">
+              <div class="card-body">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
+                  <div class="mb-3 mb-sm-0">
+                    <h5 class="card-title fw-semibold">Choose Formula</h5>
+                    <select class="form-select" id="formula-2">
+                      <option value=0>Constant Flux Boundary</option>
+                      <option value=1>Constant Head Boundary</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <div class="row">
+                    <div class="col-3">
+                      <div id="qcontainer" class="mb-3">
+                        <label for="q-2" class="form-label">q</label>
+                        <input type="text" value="1.7" class="form-control" id="q-2" aria-describedby="qHelp">
+                        <div id="qHelp" class="form-text">m2/day</div>
+                      </div>
+                      <div id="hbcontainer" class="mb-3 d-none">
+                        <label for="hb-2" class="form-label">hb</label>
+                        <input type="text" value="16.5" class="form-control" id="hb-2" aria-describedby="hbHelp">
+                        <div id="hbHelp" class="form-text">m</div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="W-2" class="form-label">W</label>
+                        <input type="text" value="58" class="form-control" id="W-2" aria-describedby="KHelp">
+                        <div id="KHelp" class="form-text">mm/year</div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="pf-2" class="form-label">ρf</label>
+                        <input type="text" value=1.000 class="form-control" id="pf-2" aria-describedby="pfHelp-2">
+                        <div id="pfHelp-2" class="form-text">g/cm3</div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="ps-2" class="form-label">ρs</label>
+                        <input type="text" value=1.025 class="form-control" id="ps-2" aria-describedby="pfHelp-2">
+                        <div id="psHelp-2" class="form-text">g/cm3</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="K-2" class="form-label">K</label>
+                        <input type="text" value="15" class="form-control" id="K-2" aria-describedby="hsHelp">
+                        <div id="hsHelp" class="form-text">m/day</div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="L-2" class="form-label">L</label>
+                        <input type="text" value="10000" class="form-control" id="L-2" aria-describedby="LHelp">
+                        <div id="LHelp" class="form-text">m</div>
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="Zo-2" class="form-label">Zo</label>
+                        <input type="text" value=100 class="form-control" id="Zo-2" aria-describedby="stepHelp">
+                        <div id="stepHelp" class="form-text">m</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary" id="calculate-XT-2">Calculate XT</button>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="Δz-2" class="form-label">Δz</label>
+                        <input type="text" value="2" class="form-control" id="Δz-2">
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="mb-3">
+                        <label for="S-2" class="form-label">S</label>
+                        <input type="text" value="0.1" class="form-control" id="S-2">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col">
+                      <button class="btn btn-primary" id="calculate-X'T-2">Calculate X'T</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="row mt-3">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="XTR-2" class="form-label">XT Result</label>
+                      <input type="text" readonly class="form-control" id="XTR-2" aria-describedby="XTR-2Help">
+                      <div id="XTR-2Help" class="form-text">m</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col">
+                    <div class="mb-3">
+                      <label for="XT'R-2" class="form-label">X'T Result</label>
+                      <input type="text" readonly class="form-control" id="XT'R-2" aria-describedby="XT'R-2Help">
+                      <div id="XT'R-2Help" class="form-text">m</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 d-flex align-items-strech">
+            <div class="card w-100">
+              <div class="card-body">
+                <img src="/src/assets/images/Figures/Seawater---Freshwater-Interface.png" class="card-img-top rounded-0"
+                  alt="...">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/apexcharts/dist/apexcharts.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
+  <script src="../assets/js/toeChange.js"></script>
+</body>
+
+</html>
