@@ -1,3 +1,4 @@
+
 //Ghyben-Herzberg formula
 function ghybenHerzberg(x, q, pf, ps, K) {
   return Math.sqrt((2 * pf * q * x) / ((ps - pf) * K));
@@ -30,6 +31,15 @@ function GetUserDate() {
   let step = +document.getElementById('step').value;
   let formula = +document.getElementById('formula').value;
   return { Q, K, pf, ps, hs, hf, L, step, formula };
+}
+
+function ValidData(Data) {
+  for (let key in Data) {
+    if (Data[key] <= 0 || isNaN(Data[key])) {
+      alert('All fields must be positive numbers!');
+      return false;
+    }
+  }
 }
 
 function GetZValue(Data, x) {
@@ -142,6 +152,9 @@ Enumerator = {
 
 async function Calculate(table) {
   let Data = GetUserDate();
+  if (!ValidData(Data)) {
+    return;
+  }
   let xtoe = await GetXToeValues(Data);
   UpdateTable(table, xtoe, Data);
   LoadChart(Data);

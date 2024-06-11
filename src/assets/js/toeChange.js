@@ -1,7 +1,6 @@
-function GetUserInput()
-{
+function GetUserInput() {
     let q = +document.getElementById('q-2').value;
-    let W = +document.getElementById('W-2').value/365000;
+    let W = +document.getElementById('W-2').value / 365000;
     let pf = +document.getElementById('pf-2').value
     let ps = +document.getElementById('ps-2').value;
     let K = +document.getElementById('K-2').value;
@@ -20,8 +19,7 @@ Enumerator = {
     CHB: 1
 }
 
-function CFBXTCalculte(Data)
-{
+function CFBXTCalculte(Data) {
     let part1 = (Data.q / Data.W) + Data.L;
     let part2 = ((Data.K * Data.δ * (1 + Data.δ) * Math.pow(Data.Zo, 2)) / (Data.W));
     return part1 - Math.sqrt(Math.pow(part1, 2) - part2);
@@ -49,30 +47,36 @@ function CHBXDashTCalculte(Data) {
     return CFBXDashTCalculte(Data);
 }
 
-function calculateXT(Data){
-    if(Data.formula == Enumerator.CFB)
-    {
+function calculateXT(Data) {
+    if (Data.formula == Enumerator.CFB) {
         let X = CFBXTCalculte(Data);
         document.getElementById('XTR-2').value = X;
     }
-    else if(Data.formula == Enumerator.CHB)
-    {
+    else if (Data.formula == Enumerator.CHB) {
         let X = CHBXTCalculte(Data);
         document.getElementById('XTR-2').value = X;
     }
 }
 
-function calculateXTDash(Data){
-    if(Data.formula == Enumerator.CFB)
-    {
+function calculateXTDash(Data) {
+    if (Data.formula == Enumerator.CFB) {
         let XDash = CFBXDashTCalculte(Data);
         document.getElementById("XT'R-2").value = XDash;
     }
-    else if(Data.formula == Enumerator.CHB)
-    {
+    else if (Data.formula == Enumerator.CHB) {
         let XDash = CHBXDashTCalculte(Data);
         document.getElementById("XT'R-2").value = XDash;
     }
+}
+
+function ValidData2(Data) {
+    for (let key in Data) {
+        if (key != "formula" && (Data[key] <= 0 || isNaN(Data[key]))) {
+            alert('All fields must be positive numbers!');
+            return false;
+        }
+    }
+    return true;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -87,14 +91,21 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById('hbcontainer').classList.remove('d-none');
         }
     });
-    
+
     document.getElementById('calculate-XT-2').addEventListener('click', function () {
         let Data = GetUserInput();
+        console.log(Data);
+        if (!ValidData2(Data)) {
+            return;
+        }
         calculateXT(Data);
     });
 
     document.getElementById("calculate-X'T-2").addEventListener('click', function () {
         let Data = GetUserInput();
+        if (!ValidData2(Data)) {
+            return;
+        }
         calculateXTDash(Data);
     });
 });

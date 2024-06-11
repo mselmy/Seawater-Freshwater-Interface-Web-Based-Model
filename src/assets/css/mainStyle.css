@@ -1,0 +1,9 @@
+/* Hide the placeholder div */
+.simplebar-placeholder {
+    display: none;
+}
+
+/* Adjust the SimpleBar container to avoid unnecessary scrollbars */
+.simplebar-content-wrapper {
+    overflow: hidden !important;
+}
