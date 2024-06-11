@@ -26,7 +26,7 @@ function GetUserDate() {
   let ps = +document.getElementById('ps').value;
   let hs = +document.getElementById('hs').value*100;
   //let hf = +document.getElementById('hf').value;
-  let hf = 0;
+  let hf = 1;
   let L = +document.getElementById('L').value*100;
   let step = +document.getElementById('step').value;
   let formula = +document.getElementById('formula').value;
@@ -34,12 +34,14 @@ function GetUserDate() {
 }
 
 function ValidData(Data) {
+  console.log(Data);
   for (let key in Data) {
-    if (Data[key] <= 0 || isNaN(Data[key])) {
+    if ( key != "formula" && (Data[key] <= 0 || isNaN(Data[key]))) {
       alert('All fields must be positive numbers!');
       return false;
     }
   }
+  return true;
 }
 
 function GetZValue(Data, x) {
