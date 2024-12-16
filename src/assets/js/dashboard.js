@@ -119,28 +119,44 @@ function LoadChart(Data){
 
   // Create a new chart instance and assign it to the global variable
   myChartInstance = new Chart(ctx, {
-    type: 'line',
+    type: "line",
     data: {
       labels: labels,
-      datasets: [{
-        label: formulaNames[Data.formula],
-        data: data,
-        borderWidth: 1
-      }]
+      datasets: [
+        {
+          label: formulaNames[Data.formula],
+          data: data,
+          borderWidth: 1,
+        },
+      ],
     },
     options: {
       scales: {
         x: {
+          title: {
+            display: true,
+            text: "X", // X-axis title
+            font: {
+              size: 16, // X-axis title font size
+            },
+          },
           reverse: true, // Reverse the x-axis
-          position: 'top' // Position the x-axis at the top
+          position: "top", // Position the x-axis at the top
         },
         y: {
+          title: {
+            display: true,
+            text: "Z", // y-axis title
+            font: {
+              size: 16, // X-axis title font size
+            },
+          },
           beginAtZero: true,
           reverse: true, // Reverse the x-axis
-          position: 'right' // Position the x-axis at the top
-        }
-      }
-    }
+          position: "right", // Position the x-axis at the top
+        },
+      },
+    },
   });
 }
 
